@@ -42,12 +42,13 @@ public class PostRepository {
             return Optional.empty();
     }
 
-    public synchronized void removeById(long id) throws NotFoundException {
+    public synchronized boolean removeById(long id) {
         if (postMap.containsKey(id)) {
-            if (!postMap.get(id).isRemoved())
+            if (!postMap.get(id).isRemoved()) {
                 postMap.get(id).setRemoved(true);
-            else
-                throw new NotFoundException();
+                return true;
+            }
         }
+        return false;
     }
 }
