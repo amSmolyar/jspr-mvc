@@ -12,11 +12,6 @@ import ru.netology.service.PostService;
 public class JavaConfig {
 
     @Bean
-    public PostController postController() {
-        return new PostController(postService());
-    }
-
-    @Bean
     public PostService postService() {
         return new PostService(postRepository());
     }
